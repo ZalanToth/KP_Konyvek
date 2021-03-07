@@ -98,7 +98,7 @@ namespace Konyvescucc
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
         {
-            //DataGridXAML.SelectedCells.RemoveAt(DataGridXAML.SelectedCells.Column);
+            //DataGridXAML.SelectedCells.RemoveAt(DataGridXAML.SelectedIndex);
         }
     }
 }
