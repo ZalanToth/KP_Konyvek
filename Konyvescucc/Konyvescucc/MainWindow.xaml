@@ -29,12 +29,12 @@
                     <!-- Header -->
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding BookID}" Width="35"/>
-                        <DataGridTextColumn Header="Szerző" Binding="{Binding Author}" Width="120"/>
-                        <DataGridTextColumn Header="könyv" Binding="{Binding Book}"  Width="143"/>
-                        <DataGridTextColumn Header="Kiadás éve" Binding="{Binding ReleaseDate}" Width="100"/>
-                        <DataGridTextColumn Header="Kiadó" Binding="{Binding Publisher}" Width="170"/>
-                        <DataGridCheckBoxColumn Header="Kölcsönözhető" Binding="{Binding Rent}" Width="*"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding BookID, Mode=OneWay}" Width="35"/>
+                        <DataGridTextColumn Header="Szerző" Binding="{Binding Author, Mode=OneWay}" Width="120"/>
+                        <DataGridTextColumn Header="könyv" Binding="{Binding Book, Mode=OneWay}"  Width="143"/>
+                        <DataGridTextColumn Header="Kiadás éve" Binding="{Binding ReleaseDate, Mode=OneWay}" Width="100"/>
+                        <DataGridTextColumn Header="Kiadó" Binding="{Binding Publisher, Mode=OneWay}" Width="170"/>
+                        <DataGridCheckBoxColumn Header="Kölcsönözhető" Binding="{Binding Rent, Mode=OneWay}" Width="*"/>
 
                     </DataGrid.Columns>
 
@@ -70,12 +70,12 @@
                 <!-- Header -->
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding MemberID}" Width="35"/>
-                    <DataGridTextColumn Header="Név" Binding="{Binding Name}" Width="120"/>
-                    <DataGridTextColumn Header="Születési dátum" Binding="{Binding BirthDate}"  Width="103"/>
-                    <DataGridTextColumn Header="Ir. szám" Binding="{Binding PostalCode}" Width="70"/>
-                    <DataGridTextColumn Header="Város" Binding="{Binding PlaceOfResidence}" Width="100"/>
-                    <DataGridTextColumn Header="Utca" Binding="{Binding Street}" Width="*"/>
+                    <DataGridTextColumn Header="ID" Binding="{Binding MemberID, Mode=OneWay}" Width="35"/>
+                    <DataGridTextColumn Header="Név" Binding="{Binding Name, Mode=OneWay}" Width="120"/>
+                    <DataGridTextColumn Header="Születési dátum" Binding="{Binding BirthDate, Mode=OneWay}"  Width="103"/>
+                    <DataGridTextColumn Header="Ir. szám" Binding="{Binding PostalCode, Mode=OneWay}" Width="70"/>
+                    <DataGridTextColumn Header="Város" Binding="{Binding PlaceOfResidence, Mode=OneWay}" Width="100"/>
+                    <DataGridTextColumn Header="Utca" Binding="{Binding Street, Mode=OneWay}" Width="*"/>
 
                 </DataGrid.Columns>
             </DataGrid>

@@ -58,8 +58,6 @@ namespace Konyvescucc
         public void Mebber(string fileName)
         {
             //Tagok beolvasása//
-            // DMembers.Clear();
-            //DataGridXAMLMembers.Items.Clear();
             DataGridXAMLMembers.ItemsSource = DMembers;
 
             foreach (var item in File.ReadAllLines(fileName))
@@ -70,6 +68,10 @@ namespace Konyvescucc
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if(Search.Text=="")
+            {
+                DataGridXAML.ItemsSource = DBooks;
+            }
             //Kis/Nagy-betű érzékeny
             var filtered = DBooks.Where(book => book.Author.StartsWith(Search.Text) || book.ReleaseDate.StartsWith(Search.Text)|| book.Book.StartsWith(Search.Text) || book.Publisher.StartsWith(Search.Text));
 
@@ -99,16 +101,12 @@ namespace Konyvescucc
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
         {
             // DataGridXAML.SelectedCells.RemoveAt(DataGridXAML.SelectedIndex));
-            var aS=DataGridXAML;
             var sasa=DataGridXAML;
-            if(aS.SelectedIndex>=0)
+            if(sasa.SelectedIndex>=0)
             {
-                for (int i = 0; i < aS.SelectedIndex; i++)
-                {
-                    sasa.Items.Remove(aS.SelectedItems[i]);
-                }
+                DBooks.RemoveAt(sasa.SelectedIndex);
+                sasa.Items.Refresh();
             }
-            aS = sasa;
         }
     }
 }
