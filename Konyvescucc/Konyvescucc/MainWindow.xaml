@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Konyvescucc"
         mc:Ignorable="d"
-        Title="DataBase" Height="450" Width="850" Background="Beige">
+        Title="DataBase" Height="470" Width="850" Background="DarkSeaGreen">
     <TabControl>
         <TabItem Header="Könyvek" Background="BlanchedAlmond">
             <Grid>
@@ -55,10 +55,32 @@
 
             </Grid>
         </TabItem>
-        <TabItem Header="Személyek">
-            
+        <TabItem Header="Személyek" Background="Aquamarine">
+            <DataGrid x:Name="DataGridXAMLMembers" HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="652"  AutoGenerateColumns="False">
+                <!-- Style -->
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="BlanchedAlmond"></Setter>
+                        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                        <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
+                        <Setter Property="BorderBrush" Value="Black"></Setter>
+                    </Style>
+                </DataGrid.Resources>
+                
+                <!-- Header -->
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding MemberID}" Width="35"/>
+                    <DataGridTextColumn Header="Név" Binding="{Binding Name}" Width="120"/>
+                    <DataGridTextColumn Header="Születési dátum" Binding="{Binding BirthDate}"  Width="103"/>
+                    <DataGridTextColumn Header="Ir. szám" Binding="{Binding PostalCode}" Width="70"/>
+                    <DataGridTextColumn Header="Város" Binding="{Binding PlaceOfResidence}" Width="100"/>
+                    <DataGridTextColumn Header="Utca" Binding="{Binding Street}" Width="*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
         </TabItem>
-        <TabItem Header="Kölcsönzések">
+        <TabItem Header="Kölcsönzések" Background="Thistle">
             
         </TabItem>
     </TabControl>

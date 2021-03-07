@@ -24,48 +24,48 @@ namespace Konyvescucc
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Books> DBooks;
+        List<Books> DBooks = new List<Books>();
+        List<Members> DMembers = new List<Members>();
         public MainWindow()
         {
             InitializeComponent();
             
             ReadAllLines("konyvek.txt");
+            Mebber("tagok.txt");
             Books konyvek = new Books("xd");
-           
-            
-            /*foreach (var item in DBooks)
-            {
-                konyvek.BookID = item.BookID;
-                konyvek.Book = item.Book;
-                konyvek.Author = item.Publisher;
-                konyvek.ReleaseDate = item.ReleaseDate;
-                konyvek.Publisher = item.Publisher;
-                konyvek.Rent = item.Rent;
-                DataGridXAML.Items.Add(konyvek);
-            }
-
-            /*konyvek.BookID = 1;
-            konyvek.Book = "Csodafasz";
-            konyvek.Author = "Toth Zalan";
-            konyvek.ReleaseDate = "2021.03.11";
-            konyvek.Publisher = "Kitalalt Kiado";
-            konyvek.Rent = true;*/
-            
+            Members tagok = new Members("dx");
         }
 
 
-        public void ReadAllLines(string FileName)
+        public void ReadAllLines(string fileName)
         {
-            DBooks = new List<Books>();
+            
+            /*DataGridXAML.Items.Clear();
+            DBooks.Clear();*/
             //int i = 0;
-            foreach (var item in File.ReadAllLines(FileName))
+
+            //Könyvek beolvasása//
+            DataGridXAML.ItemsSource = DBooks;
+
+            foreach (var item in File.ReadAllLines(fileName))
             {
                 DBooks.Add(new Books(item));
-
                 /*DataGridXAML.Items.Add(DBooks[i]);
                 i++;*/
             }
-            DataGridXAML.ItemsSource = DBooks;
+        }
+
+        public void Mebber(string fileName)
+        {
+            //Tagok beolvasása//
+            // DMembers.Clear();
+            //DataGridXAMLMembers.Items.Clear();
+            DataGridXAMLMembers.ItemsSource = DMembers;
+
+            foreach (var item in File.ReadAllLines(fileName))
+            {
+                DMembers.Add(new Members(item));
+            }
         }
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
@@ -98,7 +98,17 @@ namespace Konyvescucc
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
         {
-            //DataGridXAML.SelectedCells.RemoveAt(DataGridXAML.SelectedIndex);
+            // DataGridXAML.SelectedCells.RemoveAt(DataGridXAML.SelectedIndex));
+            var aS=DataGridXAML;
+            var sasa=DataGridXAML;
+            if(aS.SelectedIndex>=0)
+            {
+                for (int i = 0; i < aS.SelectedIndex; i++)
+                {
+                    sasa.Items.Remove(aS.SelectedItems[i]);
+                }
+            }
+            aS = sasa;
         }
     }
 }
