@@ -1,0 +1,55 @@
+﻿<Window x:Class="Konyvescucc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Konyvescucc"
+        mc:Ignorable="d"
+        Title="DataBase" Height="450" Width="850" Background="Beige">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="Search" HorizontalAlignment="Left" Height="24" Margin="667,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="Search_TextChanged"/>
+        <Label Content="Keresés" HorizontalAlignment="Left" Margin="667,48,0,0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="DataGridXAML"  HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="652"  AutoGenerateColumns="False">
+
+            <!-- Style -->
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="BlanchedAlmond"></Setter>
+                    <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
+                    <Setter Property="BorderBrush" Value="Black"></Setter>
+                </Style>
+            </DataGrid.Resources>
+
+            <!-- Header -->
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding BookID}" Width="35"/>
+                <DataGridTextColumn Header="Szerző" Binding="{Binding Author}" Width="120"/>
+                <DataGridTextColumn Header="könyv" Binding="{Binding Book}"  Width="143"/>
+                <DataGridTextColumn Header="Kiadás éve" Binding="{Binding ReleaseDate}" Width="100"/>
+                <DataGridTextColumn Header="Kiadó" Binding="{Binding Publisher}" Width="170"/>
+                <DataGridCheckBoxColumn Header="Kölcsönözhető" Binding="{Binding Rent}" Width="*"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Label Content="Könyv Hozzáadása" HorizontalAlignment="Left" Margin="667,108,0,0" VerticalAlignment="Top" Width="115" FontWeight="SemiBold"/>
+        <TextBox x:Name="AuthorBT" HorizontalAlignment="Left" Height="24" Margin="667,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="BookBT" HorizontalAlignment="Left" Height="22" Margin="667,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ReleaseDateBT" HorizontalAlignment="Left" Height="22" Margin="667,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PublisherBT" HorizontalAlignment="Left" Height="24" Margin="667,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddBT" Content="Hozzáadás" HorizontalAlignment="Left" Margin="681,324,0,0" VerticalAlignment="Top" Width="76" Click="AddBT_Click"/>
+        <Label Content="Szerző" HorizontalAlignment="Left" Margin="667,134,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Könyv" HorizontalAlignment="Left" Margin="667,178,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Kiadás éve" HorizontalAlignment="Left" Margin="667,220,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Kiadó" HorizontalAlignment="Left" Margin="667,262,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Kis/nagybetű érzékeny" HorizontalAlignment="Left" Margin="667,62,0,0" VerticalAlignment="Top" FontSize="8" Height="26"/>
+        <Button x:Name="DeleteBT" Content="TÖRLÉS" HorizontalAlignment="Left" Margin="681,376,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.547,0.6" Height="33" BorderBrush="Black" Foreground="White" Background="#FFF50000" Click="DeleteBT_Click"/>
+        <Label Content="Kijelölt sor törlése" HorizontalAlignment="Left" Margin="667,350,0,0" VerticalAlignment="Top" Width="115" FontWeight="semibold"/>
+
+    </Grid>
+</Window>
