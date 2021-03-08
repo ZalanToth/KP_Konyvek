@@ -81,7 +81,28 @@
             </DataGrid>
         </TabItem>
         <TabItem Header="Kölcsönzések" Background="Thistle">
-            
+            <DataGrid x:Name="DataGridXAMLRent" HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="502"  AutoGenerateColumns="False">
+                <!-- Style -->
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="BlanchedAlmond"></Setter>
+                        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                        <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
+                        <Setter Property="BorderBrush" Value="Black"></Setter>
+                    </Style>
+                </DataGrid.Resources>
+
+                <!-- Header -->
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding RentID, Mode=OneWay}" Width="35"/>
+                    <DataGridTextColumn Header="TagID" Binding="{Binding RMemberID, Mode=OneWay}" Width="120"/>
+                    <DataGridTextColumn Header="KönyvID" Binding="{Binding RBookID, Mode=OneWay}"  Width="103"/>
+                    <DataGridTextColumn Header="Kölcsönzés dátuma" Binding="{Binding StartOfRent, Mode=OneWay}" Width="120"/>
+                    <DataGridTextColumn Header="Visszavétel dátuma" Binding="{Binding EndOfRent, Mode=OneWay}" Width="*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
         </TabItem>
     </TabControl>
     

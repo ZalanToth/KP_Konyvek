@@ -26,14 +26,14 @@ namespace Konyvescucc
     {
         List<Books> DBooks = new List<Books>();
         List<Members> DMembers = new List<Members>();
+        List<Rents> DRents = new List<Rents>(); 
         public MainWindow()
         {
             InitializeComponent();
             
             ReadAllLines("konyvek.txt");
             Mebber("tagok.txt");
-            Books konyvek = new Books("xd");
-            Members tagok = new Members("dx");
+            Rents("kolcsonzesek.txt");
         }
 
 
@@ -63,6 +63,17 @@ namespace Konyvescucc
             foreach (var item in File.ReadAllLines(fileName))
             {
                 DMembers.Add(new Members(item));
+            }
+        }
+
+        public void Rents(string fileName)
+        {
+            //Tagok beolvasása//
+            DataGridXAMLRent.ItemsSource = DRents;
+
+            foreach (var item in File.ReadAllLines(fileName))
+            {
+                DRents.Add(new Rents(item));
             }
         }
 
