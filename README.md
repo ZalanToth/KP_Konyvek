@@ -1,4 +1,4 @@
 # KP_Konyvek
 ###
-Komplex programozás: könyvtári adatbázis kezelése
+Komplex programozás: könyvtári adatbázis létrehozás/kezelése
 ###
