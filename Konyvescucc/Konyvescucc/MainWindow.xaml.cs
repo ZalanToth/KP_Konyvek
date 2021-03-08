@@ -113,6 +113,7 @@ namespace Konyvescucc
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
         {
             // DataGridXAML.SelectedCells.RemoveAt(DataGridXAML.SelectedIndex));
+            DataGridXAML.ItemsSource = DBooks;
             var sasa=DataGridXAML;
             if(sasa.SelectedIndex>=0)
             {
@@ -123,6 +124,7 @@ namespace Konyvescucc
 
         private void DeleteRentBT_Click(object sender, RoutedEventArgs e)
         {
+            DataGridXAMLRent.ItemsSource = DRents;
             var sasa = DataGridXAMLRent;
             if (sasa.SelectedIndex >= 0)
             {
@@ -169,5 +171,37 @@ namespace Konyvescucc
             DataGridXAMLMembers.ItemsSource = filtered;
         }
 
+        private void StreetBT_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+        private void AddMemberBT_Click(object sender, RoutedEventArgs e)
+        {
+            var Solution = DBooks.Where(book => book.Author.StartsWith(Search.Text) || book.ReleaseDate.StartsWith(Search.Text) || book.Book.StartsWith(Search.Text) || book.Publisher.StartsWith(Search.Text));
+            DataGridXAMLMembers.ItemsSource = Solution;
+            ///
+
+            ///
+            Members NewMember = new Members("dx");
+            NewMember.MemberID = DMembers.Count + 1;
+            NewMember.Street = StreetBT.Text;
+            NewMember.PlaceOfResidence = PlaceOfResidssenceBT.Text;
+            NewMember.PostalCode = PostalCodeBTM.Text;
+            NewMember.BirthDate = BirthDateBT.Text;
+            NewMember.Name = NameBT.Text;
+            DMembers.Add(NewMember);
+            DataGridXAMLMembers.ItemsSource = DMembers;
+        }
+
+        private void DeleteMemberBT_Click(object sender, RoutedEventArgs e)
+        {
+            DataGridXAMLMembers.ItemsSource = DMembers;
+            var sasa = DataGridXAMLMembers;
+            if (sasa.SelectedIndex >= 0)
+            {
+                DMembers.RemoveAt(sasa.SelectedIndex);
+                sasa.Items.Refresh();
+            }
+        }
     }
 }
