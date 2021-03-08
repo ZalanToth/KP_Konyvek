@@ -66,6 +66,7 @@ namespace Konyvescucc
             }
         }
 
+
         public void Rents(string fileName)
         {
             //Tagok beolvasása//
@@ -119,5 +120,54 @@ namespace Konyvescucc
                 sasa.Items.Refresh();
             }
         }
+
+        private void DeleteRentBT_Click(object sender, RoutedEventArgs e)
+        {
+            var sasa = DataGridXAMLRent;
+            if (sasa.SelectedIndex >= 0)
+            {
+                DRents.RemoveAt(sasa.SelectedIndex);
+                sasa.Items.Refresh();
+            }
+        }
+
+        private void AddRentBT_Click(object sender, RoutedEventArgs e)
+        {
+            var Solution = DBooks.Where(book => book.Author.StartsWith(Search.Text) || book.ReleaseDate.StartsWith(Search.Text) || book.Book.StartsWith(Search.Text) || book.Publisher.StartsWith(Search.Text));
+            DataGridXAMLRent.ItemsSource = Solution;
+            Rents NewRent = new Rents("dd");
+            try
+            {
+                
+                NewRent.RentID = DRents.Count + 1;
+                NewRent.RBookID = int.Parse(BookIDBT.Text);
+                NewRent.RMemberID = int.Parse(MemberIDBT.Text);
+                NewRent.StartOfRent = StartOfRentBT.Text;
+                NewRent.EndOfRent = EndOfRentBT.Text;
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("A megadott karakterlánc helytelen");
+            }
+
+
+                DRents.Add(NewRent);
+                DataGridXAMLRent.ItemsSource = DRents;
+
+
+        }
+
+        private void SearchMember_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchMember.Text == "")
+            {
+                DataGridXAMLMembers.ItemsSource = DMembers;
+            }
+            //Kis/Nagy-betű érzékeny
+            var filtered = DMembers.Where(member => member.Name.StartsWith(SearchMember.Text) || member.Street.StartsWith(SearchMember.Text) || member.PlaceOfResidence.StartsWith(SearchMember.Text) || member.PostalCode.StartsWith(SearchMember.Text));
+
+            DataGridXAMLMembers.ItemsSource = filtered;
+        }
+
     }
 }

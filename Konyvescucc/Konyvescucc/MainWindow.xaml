@@ -39,6 +39,7 @@
                     </DataGrid.Columns>
 
                 </DataGrid>
+
                 <Label Content="Könyv Hozzáadása" HorizontalAlignment="Left" Margin="667,108,0,0" VerticalAlignment="Top" Width="115" FontWeight="SemiBold"/>
                 <TextBox x:Name="AuthorBT" HorizontalAlignment="Left" Height="24" Margin="667,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <TextBox x:Name="BookBT" HorizontalAlignment="Left" Height="22" Margin="667,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -50,60 +51,101 @@
                 <Label Content="Kiadás éve" HorizontalAlignment="Left" Margin="667,220,0,0" VerticalAlignment="Top" Width="120"/>
                 <Label Content="Kiadó" HorizontalAlignment="Left" Margin="667,262,0,0" VerticalAlignment="Top" Width="120"/>
                 <Label Content="Kis/nagybetű érzékeny" HorizontalAlignment="Left" Margin="667,62,0,0" VerticalAlignment="Top" FontSize="8" Height="26"/>
-                <Button x:Name="DeleteBT" Content="TÖRLÉS" HorizontalAlignment="Left" Margin="681,376,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.547,0.6" Height="33" BorderBrush="Black" Foreground="White" Background="#FFF50000" Click="DeleteBT_Click"/>
+                <Button x:Name="DeleteBT" Content="TÖRLÉS" HorizontalAlignment="Left" Margin="681,376,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.547,0.6" Height="33" BorderBrush="Black" Foreground="White" Background="#FFF50000" Click="DeleteRentBT_Click" />
                 <Label Content="Kijelölt sor törlése" HorizontalAlignment="Left" Margin="667,350,0,0" VerticalAlignment="Top" Width="115" FontWeight="semibold"/>
 
             </Grid>
         </TabItem>
         <TabItem Header="Személyek" Background="Aquamarine">
-            <DataGrid x:Name="DataGridXAMLMembers" HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="652"  AutoGenerateColumns="False">
-                <!-- Style -->
-                <DataGrid.Resources>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="BlanchedAlmond"></Setter>
-                        <Setter Property="FontWeight" Value="SemiBold"></Setter>
-                        <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
-                        <Setter Property="BorderBrush" Value="Black"></Setter>
-                    </Style>
-                </DataGrid.Resources>
-                
-                <!-- Header -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="812*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="DataGridXAMLMembers" HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="652"  AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                    <!-- Style -->
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="BlanchedAlmond"></Setter>
+                            <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                            <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
+                            <Setter Property="BorderBrush" Value="Black"></Setter>
+                        </Style>
+                    </DataGrid.Resources>
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding MemberID, Mode=OneWay}" Width="35"/>
-                    <DataGridTextColumn Header="Név" Binding="{Binding Name, Mode=OneWay}" Width="120"/>
-                    <DataGridTextColumn Header="Születési dátum" Binding="{Binding BirthDate, Mode=OneWay}"  Width="103"/>
-                    <DataGridTextColumn Header="Ir. szám" Binding="{Binding PostalCode, Mode=OneWay}" Width="70"/>
-                    <DataGridTextColumn Header="Város" Binding="{Binding PlaceOfResidence, Mode=OneWay}" Width="100"/>
-                    <DataGridTextColumn Header="Utca" Binding="{Binding Street, Mode=OneWay}" Width="*"/>
+                    <!-- Header -->
 
-                </DataGrid.Columns>
-            </DataGrid>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding MemberID, Mode=OneWay}" Width="35"/>
+                        <DataGridTextColumn Header="Név" Binding="{Binding Name, Mode=OneWay}" Width="120"/>
+                        <DataGridTextColumn Header="Születési dátum" Binding="{Binding BirthDate, Mode=OneWay}"  Width="103"/>
+                        <DataGridTextColumn Header="Ir. szám" Binding="{Binding PostalCode, Mode=OneWay}" Width="70"/>
+                        <DataGridTextColumn Header="Város" Binding="{Binding PlaceOfResidence, Mode=OneWay}" Width="100"/>
+                        <DataGridTextColumn Header="Utca" Binding="{Binding Street, Mode=OneWay}" Width="*"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBox x:Name="SearchMember" HorizontalAlignment="Left" Height="24" Margin="642.5,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="SearchMember_TextChanged" Grid.Column="1" />
+                <Label Content="Keresés" HorizontalAlignment="Left" Margin="642.5,48,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <Label Content="Tag Hozzáadása" HorizontalAlignment="Left" Margin="642.5,108,0,0" VerticalAlignment="Top" Width="115" FontWeight="SemiBold" Grid.Column="1"/>
+                <TextBox x:Name="NameBT" HorizontalAlignment="Left" Height="24" Margin="642.5,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <TextBox x:Name="BirthDateBT" HorizontalAlignment="Left" Height="24" Margin="642.5,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <TextBox x:Name="PostalCodeBT" HorizontalAlignment="Left" Height="22" Margin="642.5,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <TextBox x:Name="PlaceOfResidenceBT" HorizontalAlignment="Left" Height="22" Margin="642.5,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <TextBox x:Name="StreetBT" HorizontalAlignment="Left" Height="24" Margin="642.5,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <Button x:Name="AddMemberBT" Content="Hozzáadás" HorizontalAlignment="Left" Margin="656.5,324,0,0" VerticalAlignment="Top" Width="76" Click="AddBT_Click" Grid.Column="1"/>
+                <Label Content="Szerző" HorizontalAlignment="Left" Margin="642.5,134,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <Label Content="Könyv" HorizontalAlignment="Left" Margin="642.5,178,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <Label Content="Kiadás éve" HorizontalAlignment="Left" Margin="642.5,220,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <Label Content="Kiadó" HorizontalAlignment="Left" Margin="642.5,262,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <Label Content="Kis/nagybetű érzékeny" HorizontalAlignment="Left" Margin="642.5,62,0,0" VerticalAlignment="Top" FontSize="8" Height="26" Grid.Column="1"/>
+                <Button x:Name="DeleteMemberBT" Content="TÖRLÉS" HorizontalAlignment="Left" Margin="656.5,376,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.547,0.6" Height="33" BorderBrush="Black" Foreground="White" Background="#FFF50000" Click="DeleteBT_Click" Grid.Column="1"/>
+                <Label Content="Kijelölt sor törlése" HorizontalAlignment="Left" Margin="642.5,350,0,0" VerticalAlignment="Top" Width="115" FontWeight="semibold" Grid.Column="1"/>
+
+            </Grid>
         </TabItem>
         <TabItem Header="Kölcsönzések" Background="Thistle">
-            <DataGrid x:Name="DataGridXAMLRent" HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="502"  AutoGenerateColumns="False">
-                <!-- Style -->
-                <DataGrid.Resources>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="BlanchedAlmond"></Setter>
-                        <Setter Property="FontWeight" Value="SemiBold"></Setter>
-                        <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
-                        <Setter Property="BorderBrush" Value="Black"></Setter>
-                    </Style>
-                </DataGrid.Resources>
+            <Grid>
+                <DataGrid x:Name="DataGridXAMLRent" HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="502"  AutoGenerateColumns="False">
+                    <!-- Style -->
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="BlanchedAlmond"></Setter>
+                            <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                            <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
+                            <Setter Property="BorderBrush" Value="Black"></Setter>
+                        </Style>
+                    </DataGrid.Resources>
 
-                <!-- Header -->
+                    <!-- Header -->
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding RentID, Mode=OneWay}" Width="35"/>
-                    <DataGridTextColumn Header="TagID" Binding="{Binding RMemberID, Mode=OneWay}" Width="120"/>
-                    <DataGridTextColumn Header="KönyvID" Binding="{Binding RBookID, Mode=OneWay}"  Width="103"/>
-                    <DataGridTextColumn Header="Kölcsönzés dátuma" Binding="{Binding StartOfRent, Mode=OneWay}" Width="120"/>
-                    <DataGridTextColumn Header="Visszavétel dátuma" Binding="{Binding EndOfRent, Mode=OneWay}" Width="*"/>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding RentID, Mode=OneWay}" Width="35"/>
+                        <DataGridTextColumn Header="TagID" Binding="{Binding RMemberID, Mode=OneWay}" Width="120"/>
+                        <DataGridTextColumn Header="KönyvID" Binding="{Binding RBookID, Mode=OneWay}"  Width="103"/>
+                        <DataGridTextColumn Header="Kölcsönzés dátuma" Binding="{Binding StartOfRent, Mode=OneWay}" Width="120"/>
+                        <DataGridTextColumn Header="Visszavétel dátuma" Binding="{Binding EndOfRent, Mode=OneWay}" Width="*"/>
 
-                </DataGrid.Columns>
-            </DataGrid>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+                <Label Content="Kölcsönzés Hozzáadása" HorizontalAlignment="Left" Margin="648,108,0,0" VerticalAlignment="Top" Width="139" FontWeight="SemiBold"/>
+                <TextBox x:Name="MemberIDBT" HorizontalAlignment="Left" Height="24" Margin="667,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="BookIDBT" HorizontalAlignment="Left" Height="22" Margin="667,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="StartOfRentBT" HorizontalAlignment="Left" Height="22" Margin="667,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="EndOfRentBT" HorizontalAlignment="Left" Height="24" Margin="667,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="AddRentBT" Content="Hozzáadás" HorizontalAlignment="Left" Margin="681,324,0,0" VerticalAlignment="Top" Width="76" Click="AddRentBT_Click" />
+                <Label Content="TagID" HorizontalAlignment="Left" Margin="667,134,0,0" VerticalAlignment="Top" Width="120"/>
+                <Label Content="KönyvID" HorizontalAlignment="Left" Margin="667,178,0,0" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Kölcsönzés dátuma" HorizontalAlignment="Left" Margin="667,220,0,0" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Visszavétel dátuma" HorizontalAlignment="Left" Margin="667,262,0,0" VerticalAlignment="Top" Width="120"/>
+
+                <Button x:Name="DeleteRentBT" Content="TÖRLÉS" HorizontalAlignment="Left" Margin="681,376,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.547,0.6" Height="33" BorderBrush="Black" Foreground="White" Background="#FFF50000" Click="DeleteRentBT_Click" />
+                <Label Content="Kijelölt sor törlése" HorizontalAlignment="Left" Margin="667,350,0,0" VerticalAlignment="Top" Width="115" FontWeight="semibold"/>
+            </Grid>
         </TabItem>
+
     </TabControl>
-    
+
 </Window>
