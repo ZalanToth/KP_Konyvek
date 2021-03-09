@@ -108,6 +108,7 @@ namespace Konyvescucc
             NewBook.Rent = true;
             DBooks.Add(NewBook);
             DataGridXAML.ItemsSource = DBooks;
+
         }
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
@@ -191,6 +192,11 @@ namespace Konyvescucc
             NewMember.Name = NameBT.Text;
             DMembers.Add(NewMember);
             DataGridXAMLMembers.ItemsSource = DMembers;
+
+            /*StreamWriter sw = new StreamWriter("tagok.txt", true);
+            sw.WriteLine("{0};{1};{2};{3};{4};{5}", NewMember.MemberID, NewMember.Name, NewMember.BirthDate, NewMember.PostalCode, NewMember.PlaceOfResidence, NewMember.Street);
+            sw.Close();
+            Mebber("tagok.txt");*/
         }
 
         private void DeleteMemberBT_Click(object sender, RoutedEventArgs e)
@@ -202,6 +208,19 @@ namespace Konyvescucc
                 DMembers.RemoveAt(sasa.SelectedIndex);
                 sasa.Items.Refresh();
             }
+        }
+
+        private void DataGridXAMLSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            /*Members selected = (Members)DataGridXAMLMembers.SelectedItem;
+            if (selected != null)
+            {
+                NameBT.Text = selected.Name;
+                BirthDateBT.Text = selected.BirthDate;
+                PostalCodeBTM.Text = selected.PostalCode;
+                PlaceOfResidssenceBT.Text = selected.PlaceOfResidence;
+                StreetBT.Text = selected.Street;
+            }*/
         }
     }
 }

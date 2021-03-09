@@ -14,7 +14,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="Search" HorizontalAlignment="Left" Height="24" Margin="667,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="Search_TextChanged"/>
                 <Label Content="Keresés" HorizontalAlignment="Left" Margin="667,48,0,0" VerticalAlignment="Top" Width="120"/>
-                <DataGrid x:Name="DataGridXAML"  HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="652"  AutoGenerateColumns="False">
+                <DataGrid x:Name="DataGridXAML" HorizontalAlignment="Left" Height="367" Margin="10,42,0,0" VerticalAlignment="Top" Width="652"  AutoGenerateColumns="False">
 
                     <!-- Style -->
                     <DataGrid.Resources>
