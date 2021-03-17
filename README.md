@@ -2,3 +2,6 @@
 ###
 Komplex programozás: könyvtári adatbázis létrehozás/kezelése
 ###
+####
+Megtettem mindent a tudásom szerint
+####
