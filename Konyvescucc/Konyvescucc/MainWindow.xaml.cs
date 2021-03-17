@@ -212,15 +212,15 @@ namespace Konyvescucc
 
         private void DataGridXAMLSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*Members selected = (Members)DataGridXAMLMembers.SelectedItem;
-            if (selected != null)
+            Books selected = (Books)DataGridXAML.SelectedItem;
+            if (selected == null)
             {
-                NameBT.Text = selected.Name;
-                BirthDateBT.Text = selected.BirthDate;
-                PostalCodeBTM.Text = selected.PostalCode;
-                PlaceOfResidssenceBT.Text = selected.PlaceOfResidence;
-                StreetBT.Text = selected.Street;
-            }*/
+                AuthorBT.Text = selected.Author;
+                BookBT.Text = selected.Book;
+                ReleaseDateBT.Text = selected.ReleaseDate;
+                PublisherBT.Text = selected.Publisher;
+                //.Text = selected.Rent;
+            }
         }
     }
 }
